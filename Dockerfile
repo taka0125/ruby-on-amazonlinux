@@ -33,6 +33,12 @@ RUN cd /tmp && \
     rm -f /tmp/ruby-${RUBY_VERSION}.tar.gz && \
     rm -rf /tmp/ruby-${RUBY_VERSION}
 
+RUN mkdir -p /usr/local/etc \
+	&& { \
+		echo 'install: --no-document'; \
+		echo 'update: --no-document'; \
+	} >> /usr/local/etc/gemrc
+
 ENV GEM_HOME /usr/local/bundle
 ENV BUNDLE_PATH="$GEM_HOME" \
 	BUNDLE_SILENCE_ROOT_WARNING=1 \
@@ -40,7 +46,5 @@ ENV BUNDLE_PATH="$GEM_HOME" \
 ENV PATH $GEM_HOME/bin:$BUNDLE_PATH/gems/bin:$PATH
 
 RUN mkdir -p "$GEM_HOME" && chmod 777 "$GEM_HOME"
-
-ENV LANG ja_JP.UTF-8
 
 CMD ["irb"]
