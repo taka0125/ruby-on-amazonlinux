@@ -21,10 +21,11 @@ RUN yum -y update && yum install -y \
 
 RUN cp /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
 
-ENV RUBY_VERSION 2.5.1
+ENV RUBY_VERSION 2.6.2
+ENV RUBY_MAJOR_VERSION 2.6
 
 RUN cd /tmp && \
-    curl -O https://cache.ruby-lang.org/pub/ruby/2.5/ruby-${RUBY_VERSION}.tar.gz && \
+    curl -O https://cache.ruby-lang.org/pub/ruby/${RUBY_MAJOR_VERSION}/ruby-${RUBY_VERSION}.tar.gz && \
     tar -zxvf ruby-${RUBY_VERSION}.tar.gz && \
     cd ruby-${RUBY_VERSION} && \
     ./configure && \
