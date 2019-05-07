@@ -21,7 +21,7 @@ RUN yum -y update && yum install -y \
 
 RUN cp /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
 
-ENV RUBY_VERSION 2.6.2
+ENV RUBY_VERSION 2.6.3
 ENV RUBY_MAJOR_VERSION 2.6
 
 RUN cd /tmp && \
