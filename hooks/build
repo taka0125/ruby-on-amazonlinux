@@ -1,0 +1,13 @@
+#!/bin/bash
+set -ex
+
+DOCKER_TAG=${DOCKER_TAG:-"2.6.3-2.10.2"}
+RUBY_VERSION=${DOCKER_TAG%-*}
+BUNDLER_VERSION=${DOCKER_TAG#*-}
+RUBY_MAJOR_VERSION=${RUBY_VERSION%.*}
+
+docker build \
+  --build-arg "RUBY_VERSION=${RUBY_VERSION}" \
+  --build-arg "BUNDLER_VERSION=${BUNDLER_VERSION}" \
+  --build-arg "RUBY_MAJOR_VERSION=${RUBY_MAJOR_VERSION}" \
+  -t "${IMAGE_NAME}"
