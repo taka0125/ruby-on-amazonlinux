@@ -10,4 +10,4 @@ docker build \
   --build-arg "RUBY_VERSION=${RUBY_VERSION}" \
   --build-arg "BUNDLER_VERSION=${BUNDLER_VERSION}" \
   --build-arg "RUBY_MAJOR_VERSION=${RUBY_MAJOR_VERSION}" \
-  -t "${IMAGE_NAME}"
+  -t "${IMAGE_NAME}" .
