@@ -1,8 +1,8 @@
+FROM amazonlinux:latest
+
 ARG RUBY_VERSION
 ARG BUNDLER_VERSION
 ARG RUBY_MAJOR_VERSION
-
-FROM amazonlinux:latest
 
 RUN set -ex && \
     yum -y update && \
@@ -36,14 +36,14 @@ RUN cp /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
 
 RUN set -ex && \
     cd /tmp && \
-    curl -O https://cache.ruby-lang.org/pub/ruby/${RUBY_MAJOR_VERSION}/ruby-${RUBY_VERSION}.tar.gz && \
-    tar -zxvf ruby-${RUBY_VERSION}.tar.gz && \
-    cd ruby-${RUBY_VERSION} && \
+    curl -O https://cache.ruby-lang.org/pub/ruby/$RUBY_MAJOR_VERSION/ruby-$RUBY_VERSION.tar.gz && \
+    tar -zxvf ruby-$RUBY_VERSION.tar.gz && \
+    cd ruby-$RUBY_VERSION && \
     ./configure && \
     make && \
     make install && \
-    rm -f /tmp/ruby-${RUBY_VERSION}.tar.gz && \
-    rm -rf /tmp/ruby-${RUBY_VERSION}
+    rm -f /tmp/ruby-$RUBY_VERSION.tar.gz && \
+    rm -rf /tmp/ruby-$RUBY_VERSION
 
 RUN mkdir -p /usr/local/etc \
 	&& { \
